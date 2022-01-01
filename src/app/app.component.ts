@@ -10,7 +10,7 @@ import { StatoCella } from './enums/stato-cella.enum';
 export class AppComponent {
   title = 'GameOfLife';
   nRighe: number = 20;
-  nColonne: number = 30;
+  nColonne: number = 40;
   statoCella: StatoCella[][];
   statoApp: StatoApp;
   ciclo: number;
@@ -105,7 +105,7 @@ export class AppComponent {
         }
 
 
-    }, 1000);
+    }, 500);
 
 
 
