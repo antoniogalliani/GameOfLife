@@ -1,7 +1,10 @@
 <div id="rigaComandi">
   <button type="button" *ngIf="statoApp === 0" (click)="attivaApp()">Vai</button>
   <button type="button" *ngIf="statoApp === 1" (click)="fermaApp()">Ferma</button>
-  {{statoApp}}{{ciclo}}
+  STATO APP:&nbsp;
+  <span *ngIf="statoApp === 0">DISATTIVA</span>
+  <span *ngIf="statoApp === 1">ATTIVA</span>
+  &nbsp;-&nbsp;CICLO ESECUZIONE:&nbsp;{{ciclo}}
 </div>
 <div id="griglia" style="margin:0">
   <div id="riga" style="display:inline;float:left;clear:left;height:30px" *ngFor="let item2 of [].constructor(nRighe);index as i1">    
