@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PosizioneCella } from './entità/posizione-cella';
 import { StatoApp } from './enums/stato-app';
 import { StatoCella } from './enums/stato-cella.enum';
 
@@ -14,8 +15,8 @@ export class AppComponent {
   statoCella: StatoCella[][];
   statoApp: StatoApp;
   ciclo: number;
-  nuoveCelleVive: any[];
-  nuoveCelleMorte: any[];
+  nuoveCelleVive: PosizioneCella[];
+  nuoveCelleMorte: PosizioneCella[];
   interval: number;
 
 
@@ -128,7 +129,13 @@ export class AppComponent {
     return risultato;
   }
 
-  ul(i: number, j: number): StatoCella {
+  nViciniMorti(i: number, j: number): number {
+
+    return 8 - this.nViciniVivi(i, j);
+
+  }
+
+  private ul(i: number, j: number): StatoCella {
     let result = 0;
     try {
       result = this.statoCella[i - 1][j - 1]
@@ -138,7 +145,7 @@ export class AppComponent {
     return result ? result : 0;
   }
 
-  u(i: number, j: number): StatoCella {
+  private u(i: number, j: number): StatoCella {
     let result = 0;
     try {
       result = this.statoCella[i-1][j]
@@ -148,7 +155,7 @@ export class AppComponent {
     return result ? result : 0;
   }
 
-  ur(i: number, j: number): StatoCella {
+  private ur(i: number, j: number): StatoCella {
     let result = 0;
     try {
       result = this.statoCella[i - 1][j + 1]
@@ -158,7 +165,7 @@ export class AppComponent {
     return result ? result : 0;
   }
 
-  l(i: number, j: number): StatoCella {
+  private l(i: number, j: number): StatoCella {
     let result = 0;
     try {
       result = this.statoCella[i][j - 1 ]
@@ -168,7 +175,7 @@ export class AppComponent {
     return result ? result : 0;
   }
 
-  r(i: number, j: number): StatoCella {
+  private r(i: number, j: number): StatoCella {
     let result = 0;
     try {
       result = this.statoCella[i][j +1 ]
@@ -178,7 +185,7 @@ export class AppComponent {
     return result ? result : 0;
   }
 
-  dl(i: number, j: number): StatoCella {
+  private dl(i: number, j: number): StatoCella {
     let result = 0;
     try {
       result = this.statoCella[i + 1][j - 1]
@@ -188,7 +195,7 @@ export class AppComponent {
     return result ? result : 0;
   }
 
-  d(i: number, j: number): StatoCella {
+  private d(i: number, j: number): StatoCella {
     let result = 0;
     try {
       result = this.statoCella[i+1][j]
@@ -198,7 +205,7 @@ export class AppComponent {
     return result ? result : 0;
   }
 
-  dr(i: number, j: number): StatoCella {
+  private dr(i: number, j: number): StatoCella {
     let result = 0;
     try {
       result = this.statoCella[i + 1][j + 1]
@@ -213,11 +220,7 @@ export class AppComponent {
 
 
 
-  nViciniMorti(i: number, j: number): number {
 
-    return 8 - this.nViciniVivi(i, j);
-
-  }
 
 
 }
